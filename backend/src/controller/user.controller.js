@@ -1,5 +1,5 @@
 import FriendRequest from "../models/FriendRequest.js";
-import User from "../models/user.model.js";
+import User from "../models/User.js";
 
 export async function getRecommendedUsers(req, res) {
   try {
@@ -116,6 +116,43 @@ export async function acceptFriendRequest(req, res) {
 
     } catch (error) {
         console.error("Error in acceptFriendRequest:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+}
+
+export async function getFriendRequests(req, res){
+
+    try {
+        
+        const incomingReqs = await FriendRequest.find({
+            recipient: req.user._id,
+            status:"pending"
+        }).populate("sender", "fullName profilePic nativeLang learningLang");
+
+        const acceptedReqs = await FriendRequest.find({
+            sender: req.user._id,
+            status:"accepted"
+        }).populate("recipient", "fullName profilePic nativeLang learningLang");
+
+        res.status(200).json({ incomingReqs, acceptedReqs });
+    } catch (error) {
+        console.error("Error in getFriendRequests:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+}
+
+export async function getOutgoingFriendRequests(req, res){
+
+    try {
+        
+        const outgoingReqs = await FriendRequest.find({
+            sender: req.user._id,
+            status:"pending"
+        }).populate("recipient", "fullName profilePic nativeLang learningLang");
+
+        res.status(200).json(outgoingReqs);
+    } catch (error) {
+        console.error("Error in getOutgoingFriendRequests:", error);
         res.status(500).json({ message: "Server error" });
     }
 }
