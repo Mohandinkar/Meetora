@@ -1,7 +1,6 @@
-import React from "react";
+
 import { Toaster } from "react-hot-toast";
-import { useQuery } from "@tanstack/react-query";
-import { axiosInstance } from "./lib/axios";
+
 import HomePage from "./pages/HomePage";
 import { Navigate, Route } from "react-router";
 import { Routes } from "react-router";
@@ -10,7 +9,7 @@ import LoginPage from "./pages/loginPage";
 import NotificationPage from "./pages/NotificationPage";
 import OnboardingPage from "./pages/OnboardingPage";
 import PageLoader from "./components/PageLoader.jsx";
-import { getAuthUser } from "./lib/api.js";
+
 import useAuthUser from "./hooks/useAuthUser.js";
 
 
@@ -36,7 +35,10 @@ const App = () => {
         <Route path="/signup" element={!isAuthenticated ? <SignupPage/>: <Navigate to="/"/>}/>
         <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to="/"/>} />
         <Route path="/notifications" element={isAuthenticated ? <NotificationPage />: <Navigate to="/login"/>} />
-        <Route path="/onboarding" element={isAuthenticated ? <OnboardingPage />: <Navigate to="/login"/>} />
+        <Route path="/onboarding" element={isAuthenticated ? (
+          !isOnboarded ? (<OnboardingPage />) : (<Navigate to="/"/>)
+        ): 
+        (<Navigate to="/login"/>)} />
       </Routes>
       <Toaster/>
     </div>
