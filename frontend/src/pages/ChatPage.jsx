@@ -17,6 +17,7 @@ import {
   useCreateChatClient,
 } from "stream-chat-react";
 import { StreamChat } from "stream-chat";
+import CallButton from "../components/CallButton.jsx";
 
 const STREAM_API_KEY = import.meta.env.VITE_STREAM_API_KEY;
 
@@ -78,11 +79,24 @@ const ChatPage = () => {
 
   if (loading || !chatClient || !channel) return <ChatLoader />;
 
+  const handleVideocall = ()=>{
+     if (channel) {
+      const callUrl = `${window.location.origin}/call/${channel.id}`;
+
+      channel.sendMessage({
+        text: `I've started a video call. Join me here: ${callUrl}`,
+      });
+
+      toast.success("Video call link sent successfully!");
+    }
+  }
+
   return (
     <div className="h-[93vh]">
       <Chat client={chatClient}>
         <Channel channel={channel}>
           <div className="w-full relative">
+            <CallButton handleVideoCall={handleVideocall}/>
             <Window>
               <ChannelHeader />
               <MessageList />
