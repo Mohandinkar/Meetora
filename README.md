@@ -141,7 +141,24 @@ Available themes configured:
 - Notification system
 - Protected routes with authentication middleware
 
-## 🔧 Development Notes
+## � Stream Integration
+
+### Real-Time Chat & Video Calling
+
+**Stream Chat SDK** powers real-time communication in Meetora:
+
+- **User Management**: Users are created/updated in Stream when they sign up. Each user gets a unique Stream user ID linked to their MongoDB account.
+- **Token Generation**: Secure tokens are generated server-side for each user session, enabling authenticated access to Stream's chat and video calling services.
+- **Chat Channels**: Users can participate in direct message channels with other learners. Messages are delivered instantly using Stream's real-time infrastructure.
+- **Video Calling**: Stream's video calling capability enables face-to-face conversations between language learners and native speakers for immersive practice.
+
+**How it Works**:
+1. User logs in → Backend generates a Stream token
+2. Frontend connects to Stream Chat using this token
+3. Users can send messages and initiate video calls in real-time
+4. All communications are secured with JWT authentication on the backend
+
+## �🔧 Development Notes
 
 - Backend uses ES modules (`"type": "module"` in package.json)
 - Frontend uses Vite for fast development and building
