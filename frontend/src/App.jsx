@@ -12,6 +12,7 @@ import Layout from "./components/Layout.jsx";
 import { useThemeStore } from "./store/useThemeStore.js";
 import ChatPage from "./pages/ChatPage.jsx";
 import useAuthUser from "./hooks/useAuthUser.js";
+import CallPage from "./pages/CallPage.jsx";
 
 const App = () => {
   //custom hook to get auth user
@@ -83,6 +84,16 @@ const App = () => {
           isAuthenticated && isOnboarded ? (
             <Layout showSidebar={false}>
               <ChatPage/>
+            </Layout>
+          ) :(
+            <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+          )
+        }/>
+
+        <Route path="/call/:id" element={
+          isAuthenticated && isOnboarded ? (
+            <Layout showSidebar={false}>
+             <CallPage/>
             </Layout>
           ) :(
             <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
