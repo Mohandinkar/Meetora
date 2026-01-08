@@ -40,7 +40,7 @@ const SignupPage = () => {
           <div className="mb-4 flex justify-start itesms-center gap-2">
             <ShipWheel className="w-9 h-9 text-primary" />
             <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary tracking-wider">
-              Meetora
+              PolyTalk
             </span>
           </div>
 
@@ -57,7 +57,7 @@ const SignupPage = () => {
                 <div>
                   <h2 className="text-xl font-semibold">Create an Account</h2>
                   <p className="text-sm opacity-70">
-                    Join Meetora and start your language learning adventure!
+                    Join PolyTalk and start your language learning adventure!
                   </p>
                 </div>
 

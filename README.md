@@ -1,4 +1,4 @@
-# Meetora
+# PolyTalk
 
 Many learners struggle to practice a new language with real speakers. This platform bridges that gap by connecting learners with people who already know the language, enabling natural and practical learning through conversation.
 
@@ -29,7 +29,7 @@ Many learners struggle to practice a new language with real speakers. This platf
 ## 📁 Project Structure
 
 ```
-Meetora/
+PolyTalk/
 ├── frontend/          # React frontend application
 │   ├── src/
 │   │   ├── components/    # Reusable components
@@ -61,7 +61,7 @@ Meetora/
 ### Step 1: Clone the Repository
 ```bash
 git clone <repository-url>
-cd Meetora
+cd PolyTalk
 ```
 
 ### Step 2: Install Frontend Dependencies
@@ -145,7 +145,7 @@ Available themes configured:
 
 ### Real-Time Chat & Video Calling
 
-**Stream Chat SDK** powers real-time communication in Meetora:
+**Stream Chat SDK** powers real-time communication in PolyTalk:
 
 - **User Management**: Users are created/updated in Stream when they sign up. Each user gets a unique Stream user ID linked to their MongoDB account.
 - **Token Generation**: Secure tokens are generated server-side for each user session, enabling authenticated access to Stream's chat and video calling services.
