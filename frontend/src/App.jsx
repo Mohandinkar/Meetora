@@ -1,12 +1,12 @@
 import { Toaster } from "react-hot-toast";
 
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage.jsx";
 import { Navigate, Route } from "react-router";
 import { Routes } from "react-router";
 import SignupPage from "./pages/SignupPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import NotificationPage from "./pages/NotificationPage";
-import OnboardingPage from "./pages/OnboardingPage";
+import NotificationPage from "./pages/NotificationPage.jsx";
+import OnboardingPage from "./pages/OnboardingPage.jsx";
 import PageLoader from "./components/PageLoader.jsx";
 import Layout from "./components/Layout.jsx";
 import { useThemeStore } from "./store/useThemeStore.js";
